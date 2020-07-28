@@ -113,7 +113,7 @@ Plugin 'lisposter/vim-blackboard'
 Plugin 'pgavlin/pulumi.vim'
 Plugin 'vim-python/python-syntax'
 Plugin 'cocopon/iceberg.vim'
-Plugin 'lewis6991/moonlight.vim'
+Plugin 'salman69e27/moonlight.vim'
 
 call vundle#end()
 
