@@ -372,8 +372,7 @@ set_from_resource $term_color15    color15
 
 
 # hide/unhide polybar
-bindsym $mod+m exec "python ~/scripts/polybar/toggle_beautiful_green.py"
-bindsym $mod+Shift+m exec "python ~/scripts/polybar/toggle_tray.py"
+bindsym $mod+m exec "polybar-msg cmd toggle"
 # hide/unhide i3status bar
 # bindsym $mod+m bar mode toggle
 
