@@ -64,7 +64,7 @@ bindsym $mod+F8 exec spotify
 bindsym $mod+F4 exec mailspring
 bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id "killall picom"
-bindsym $mod+Ctrl+t exec --no-startup-id "picom --experimental-backends -b"
+bindsym $mod+Ctrl+t exec --no-startup-id "picom -b"
 bindsym $mod+Shift+d exec kill -s USR1 $(pidof deadd-notification-center)
 bindsym $mod+Ctrl+d exec "killall deadd-notification-center; notify-send 'deadd-notification-center restarted'"
 bindsym Print exec --no-startup-id i3-scrot
@@ -290,7 +290,7 @@ bindsym $mod+9 exec --no-startup-id xsecurelock
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom --experimental-backends -b
+exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -299,7 +299,7 @@ exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
 exec --no-startup-id /home/salman/.joplin/Joplin.AppImage
 exec --no-startup-id mailspring
-exec --no-startup-id "python3 /home/salman/scripts/spotify-rofi-lyrics/song_switch_listener.py"
+exec --no-startup-id "python3 /home/salman/.config/scripts/spotify-rofi-lyrics/song_switch_listener.py"
 #exec --no-startup-id deadd-notification-center
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
@@ -378,10 +378,10 @@ bindsym $mod+m exec "polybar-msg cmd toggle"
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #61759A #61759A #99BECE #FDF6E3
-  client.focused_inactive #454948 #454948 #99BECE #454948
-  client.unfocused        #454948 #454948 #99BECE #454948
-  client.urgent           #AC352E #AC352E #1A88BC #268BD2
+  client.focused          #D5C5C0 #D5C5C0 #040610 #FDF6E3
+  client.focused_inactive #040610 #040610 #D5C5C0 #454948
+  client.unfocused        #040610 #040610 #D5C5C0 #454948
+  client.urgent           #AC352E #AC352E #040610 #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
   client.background       #2B2C2B
