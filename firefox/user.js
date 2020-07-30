@@ -1,0 +1,1 @@
+chrome/firefox-sweet-theme/configuration/user.js

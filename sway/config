@@ -27,7 +27,7 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -57,24 +57,14 @@ bindsym XF86AudioMute exec pamixer -t
 # Applications bindsyms
 ################################################################################################
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec chromium
-bindsym $mod+Shift+F2 exec chromium --incognito
 bindsym $mod+F3 exec thunar
 bindsym $mod+F8 exec spotify
 bindsym $mod+F4 exec mailspring
 bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id "killall picom"
-bindsym $mod+Ctrl+t exec --no-startup-id "picom --experimental-backends -b"
-bindsym $mod+Shift+d exec kill -s USR1 $(pidof deadd-notification-center)
-bindsym $mod+Ctrl+d exec "killall deadd-notification-center; notify-send 'deadd-notification-center restarted'"
-bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 ################################################################################################
 # Windows navigation
 ################################################################################################
-focus_follows_mouse off
+focus_follows_mouse no
 
 # change focus with h-j-k-l
 bindsym $mod+h focus left
@@ -101,9 +91,6 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # workspace back and forth (with/without active container)
-workspace_auto_back_and_forth yes
-bindsym $mod+b workspace back_and_forth
-bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 #navigate workspaces next / previous
 bindsym $mod+Ctrl+Right workspace next
@@ -188,128 +175,62 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 # Applications workspace assignments
 ################################################################################################
 # Open applications on specific workspaces
-assign [class="Termite"] $ws1
-assign [class="firefox"] $ws2
-assign [class="Google-chrome"] $ws2
-assign [class="Chromium"] $ws2
-assign [class="Thunar"] $ws3
-assign [class="okular"] $ws4
-assign [class="Foxit Reader"] $ws4
-assign [class="Thunderbird"] $ws5
-assign [class="Mailspring"] $ws5
-assign [class="Joplin"] $ws5
-assign [class="vlc"] $ws7
-for_window [class="Spotify"] move to workspace $ws8
 ################################################################################################
 # Floating windows
 ################################################################################################
 # Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable border pixel 1
-for_window [class="calamares"] floating enable border normal
-for_window [class="Clipgrab"] floating enable
-for_window [title="File Transfer*"] floating enable
-for_window [class="fpakman"] floating enable
-for_window [class="Galculator"] floating enable border pixel 1
-for_window [class="GParted"] floating enable border normal
-for_window [title="i3_help"] floating enable sticky enable border normal
-for_window [class="Lightdm-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Manjaro-hello"] floating enable
-for_window [class="Manjaro Settings Manager"] floating enable border normal
-for_window [title="MuseScore: Play Panel"] floating enable
-for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Oblogout"] fullscreen enable
-for_window [class="octopi"] floating enable
-for_window [title="About Pale Moon"] floating enable
-for_window [class="Pamac-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable
-for_window [class="qt5ct"] floating enable sticky enable border normal
-for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-for_window [class="Simple-scan"] floating enable border normal
-for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Skype"] floating enable border normal
-for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
-for_window [class="Xfburn"] floating enable
 
 # switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r exec swaymsg reload
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# Set shut down, restart and locking features
-bindsym $mod+0 mode "$mode_system"
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id xsecurelock
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
 
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 5 px or 5 ppt
-        bindsym j resize grow height 5 px or 5 ppt
-        bindsym k resize shrink height 5 px or 5 ppt
-        bindsym l resize grow width 5 px or 5 ppt
+		# These bindings trigger as soon as you enter the resize mode
+		# Pressing left will shrink the window’s width.
+		# Pressing right will grow the window’s width.
+		# Pressing up will shrink the window’s height.
+		# Pressing down will grow the window’s height.
+		bindsym h resize shrink width 5 px or 5 ppt
+		bindsym j resize grow height 5 px or 5 ppt
+		bindsym k resize shrink height 5 px or 5 ppt
+		bindsym l resize grow width 5 px or 5 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+		# same bindings, but for the arrow keys
+		bindsym Left resize shrink width 10 px or 10 ppt
+		bindsym Down resize grow height 10 px or 10 ppt
+		bindsym Up resize shrink height 10 px or 10 ppt
+		bindsym Right resize grow width 10 px or 10 ppt
 
-        # exit resize mode: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+		# exit resize mode: Enter or Escape
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id xsecurelock
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom --experimental-backends -b
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
 exec --no-startup-id /home/salman/.joplin/Joplin.AppImage
-exec --no-startup-id mailspring
-exec --no-startup-id deadd-notification-center
-exec --no-startup-id "python3 /home/salman/.config/scripts/spotify-rofi-lyrics/song_switch_listener.py"
+exec --no-startup-id mako
+
 #exec --no-startup-id deadd-notification-center
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 #exec --no-startup-id xautolock -time 10 -locker xsecurelock
-exec --no-startup-id xss-lock -n /usr/share/doc/xss-lock/dim-screen.sh -- xsecurelock
 exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id "sh ~/.config/polybar/launch.sh"
 # exec --no-startup-id fbxkb
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -323,57 +244,37 @@ exec_always --no-startup-id "sh ~/.config/polybar/launch.sh"
 # to:
 # background $term_background
 # Same logic applied to everything else.
-set_from_resource $term_background background
-set_from_resource $term_foreground foreground
-set_from_resource $term_color0     color0
-set_from_resource $term_color1     color1
-set_from_resource $term_color2     color2
-set_from_resource $term_color3     color3
-set_from_resource $term_color4     color4
-set_from_resource $term_color5     color5
-set_from_resource $term_color6     color6
-set_from_resource $term_color7     color7
-set_from_resource $term_color8     color8
-set_from_resource $term_color9     color9
-set_from_resource $term_color10    color10
-set_from_resource $term_color11    color11
-set_from_resource $term_color12    color12
-set_from_resource $term_color13    color13
-set_from_resource $term_color14    color14
-set_from_resource $term_color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-# bar {
-	# i3bar_command i3bar
-	# status_command i3status
-	# position bottom
+ bar {
+	 status_command i3status
+	 position bottom
 
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
+# please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+	tray_output primary
+	tray_output eDP1
 
-	# bindsym button4 nop
-	# bindsym button5 nop
-#   font xft:URWGothic-Book 11
-	# strip_workspace_numbers no
+	 bindsym button4 nop
+	 bindsym button5 nop
+   font xft:URWGothic-Book 11
+	 strip_workspace_numbers no
 
-    # colors {
-        # background #000613
-        # statusline #F9FAF9 
-        # separator  #F9FAF9 
+	 colors {
+		 background #000613
+		 statusline #F9FAF9 
+		 separator  #F9FAF9 
 
-#                      border  backgr. text
-        # focused_workspace  #F9FAF9 #1644A0 #FFFFFF
-        # active_workspace   #595B5B #311A39 #FDF6E3
-        # inactive_workspace #595B5B #17202B #EEE8D5
-        # binding_mode       #7260FB #17202B #F9FAF9
-        # urgent_workspace   #7260FB #FDF6E3 #E5201D
-    # }
-# }
+					  #border  backgr. text
+		 focused_workspace  #F9FAF9 #1644A0 #FFFFFF
+		 active_workspace   #595B5B #311A39 #FDF6E3
+		 inactive_workspace #595B5B #17202B #EEE8D5
+		 binding_mode       #7260FB #17202B #F9FAF9
+		 urgent_workspace   #7260FB #FDF6E3 #E5201D
+	 }
+ }
 
 
 # hide/unhide polybar
-bindsym $mod+m exec "polybar-msg cmd toggle"
 # hide/unhide i3status bar
 # bindsym $mod+m bar mode toggle
 
@@ -414,37 +315,40 @@ set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+		bindsym o      mode "$mode_gaps_outer"
+		bindsym i      mode "$mode_gaps_inner"
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
 }
 mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
+		bindsym plus  gaps inner current plus 5
+		bindsym minus gaps inner current minus 5
+		bindsym 0     gaps inner current set 0
 
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
+		bindsym Shift+plus  gaps inner all plus 5
+		bindsym Shift+minus gaps inner all minus 5
+		bindsym Shift+0     gaps inner all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
 }
 mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
+		bindsym plus  gaps outer current plus 5
+		bindsym minus gaps outer current minus 5
+		bindsym 0     gaps outer current set 0
 
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
+		bindsym Shift+plus  gaps outer all plus 5
+		bindsym Shift+minus gaps outer all minus 5
+		bindsym Shift+0     gaps outer all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
 }
 
 # Keyboard layout
 # exec --no-startup-id “setxkbmap -model pc105 -layout us,ar -option grp:alt_shift_toggle”
 
 bindsym $mod+c exec bash ~/scripts/RestartNetwork/RestartNetwork.sh
+#no_focus [app_id="deadd-notification-center"]
+#for_window [app_id="deadd-notification-center"] move right 625px, move up 350px
+#for_window [app_id="deadd-notification-center"] border pixel 0, sticky enable
