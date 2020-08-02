@@ -1,0 +1,418 @@
+@define-color bg rgba(4, 6, 16, 1);
+@define-color ac rgba(213, 197, 192, 1);
+@define-color fg rgba(174, 151, 147, 1);
+@define-color fg-alt rgba(12, 16, 42, 1);
+
+* {
+    border:        none;
+    border-radius: 0;
+    font-family:   Zekton;
+    font-size:    12px;
+    box-shadow:    none;
+    text-shadow:   none;
+    transition-duration: 0s;
+    margin: 0 0 0 0;
+}
+
+
+
+#window {
+    margin-left: 40px;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px 0 0 10px;
+    transition: none;
+    font-size: 12px;
+}
+
+window#waybar {
+    background: @bg;
+	border-bottom: 2px solid @ac;
+	border-radius: 6px 6px 0 0;
+	color: @fg;
+}
+/*window#waybar.solo {*/
+    /*background: rgba(1, 1, 1, 0.40);*/
+	/*border-left: 10px solid #00000000;*/
+/*}*/
+
+#workspaces {
+	padding-left: 4px;
+    transition: none;
+    /*border-top: 1px solid #ff79c6;*/
+}
+
+#workspaces button {
+	padding: 0 2 0 2;
+    transition: none;
+    color:      @fg-alt;
+    background: transparent;
+}
+
+#workspaces button.visible {
+    color:      @fg;
+}
+
+#workspaces button.focused {
+    border-top: 0px solid #9aedfe;
+    color: @fg;
+}
+
+#workspaces button:hover {
+}
+
+#workspaces button.urgent {
+    color:      rgba(238, 46, 36, 1);
+}
+
+/*#mode, #battery, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-spotify, #custom-weather {*/
+    /*margin:     0px 6px 0px 90px;*/
+    /*min-width:  5px;*/
+/*}*/
+
+#idle_inhibitor {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 3px;
+    padding-right: 3px;
+    transition: none;
+}
+
+#idle_inhibitor.deactivated {
+    color:      rgba(238, 46, 36, 1);
+}
+
+#network {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-extip {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#clock {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    font-size: 12px;
+}
+
+#temperature {
+    margin-left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-temperature_cpu {
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-temperature_gpu {
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-temperature_gpu2 {
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-temperature_ssd {
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-temperature_nvme {
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#battery.warning {
+    color:       rgba(255, 210, 4, 1);
+}
+
+#battery.critical {
+    color:      rgba(238, 46, 36, 1);
+}
+
+#battery.charging {
+    color:      rgba(217, 216, 216, 1);
+}
+
+#custom-spotify {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    font-size: 12px;
+}
+
+#custom-spotify_previous {
+    margin-left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+}
+
+#custom-spotify_playpause {
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+}
+
+#custom-spotify_next {
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+}
+
+#custom-storage_root {
+    margin-left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-storage_home {
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-storage_stockage {
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-info_trash {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-weather {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-airquality {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-updates {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-uptime {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-kernel {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#pulseaudio {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+    transition: none;
+    font-size: 12px;
+}
+
+#pulseaudio.muted {
+	color: grey;
+}
+
+#cpu {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#battery {
+    padding-left: 4px;
+    padding-right: 4px;
+    transition: none;
+}
+
+#memory {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#tray {
+    margin-left: 0;
+    margin-right: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0 10px 10px 0;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+}
+
+#custom-rofi_exit {
+    margin-left: 0;
+    margin-right: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0 10px 10px 0;
+    transition: none;
+    color: #00acc1;
+    background: rgba(0, 60, 60, 1);
+}
+
+#custom-rofi_menu {
+    margin-left: 4px;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px 0 0 10px;
+    transition: none;
+    color: #00acc1;
+    background: rgba(0, 60, 60, 1);
+}
+
+#custom-redshift {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+    background: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-left-end-top {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    transition: none;
+    background: rgba(1, 1, 1, 0.40);
+    color: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-right-end-top {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    transition: none;
+    background: rgba(1, 1, 1, 0.40);
+    color: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-left-end-bottom {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    transition: none;
+    background: rgba(1, 1, 1, 0.40);
+    color: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}
+
+#custom-right-end-bottom {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    transition: none;
+    background: rgba(1, 1, 1, 0.40);
+    color: rgba(0, 60, 60, 1);
+    font-size: 12px;
+}

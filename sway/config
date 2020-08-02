@@ -1,3 +1,13 @@
+# sway config file (v4)
+input * {
+    xkb_layout "us,ar"
+    xkb_variant ""
+    xkb_options "grp:alt_shift_toggle"
+}
+output * bg /home/salman/Pictures/solid_or.jpg fill
+
+input <identifier> xkb_model "pc105"
+
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
@@ -91,6 +101,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # workspace back and forth (with/without active container)
+workspace_auto_back_and_forth yes
 
 #navigate workspaces next / previous
 bindsym $mod+Ctrl+Right workspace next
@@ -132,7 +143,7 @@ bindsym $mod+minus scratchpad show
 ################################################################################################
 # Workspaces
 ################################################################################################
-# Workspace names (match with polybar)
+# Workspace names (match with waybar)
 set $ws1 1
 set $ws2 2
 set $ws3 3
@@ -218,20 +229,11 @@ mode "resize" {
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-#exec --no-startup-id manjaro-hello
-exec --no-startup-id nm-applet
-exec --no-startup-id clipit
-exec --no-startup-id blueman-applet
-exec --no-startup-id /home/salman/.joplin/Joplin.AppImage
+exec_always --no-startup-id bash /home/salman/.config/waybar/launch.sh
 exec --no-startup-id mako
 
-#exec --no-startup-id deadd-notification-center
-# exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
-# exec --no-startup-id start_conky_green
-#exec --no-startup-id xautolock -time 10 -locker xsecurelock
 exec_always --no-startup-id ff-theme-util
-# exec --no-startup-id fbxkb
+
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
 # https://i3wm.org/docs/userguide.html#xresources
@@ -244,35 +246,6 @@ exec_always --no-startup-id ff-theme-util
 # to:
 # background $term_background
 # Same logic applied to everything else.
-
-# Start i3bar to display a workspace bar (plus the system information i3status if available)
- bar {
-	 status_command i3status
-	 position bottom
-
-# please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-	tray_output primary
-	tray_output eDP1
-
-	 bindsym button4 nop
-	 bindsym button5 nop
-   font xft:URWGothic-Book 11
-	 strip_workspace_numbers no
-
-	 colors {
-		 background #000613
-		 statusline #F9FAF9 
-		 separator  #F9FAF9 
-
-					  #border  backgr. text
-		 focused_workspace  #F9FAF9 #1644A0 #FFFFFF
-		 active_workspace   #595B5B #311A39 #FDF6E3
-		 inactive_workspace #595B5B #17202B #EEE8D5
-		 binding_mode       #7260FB #17202B #F9FAF9
-		 urgent_workspace   #7260FB #FDF6E3 #E5201D
-	 }
- }
-
 
 # hide/unhide polybar
 # hide/unhide i3status bar
@@ -352,3 +325,11 @@ bindsym $mod+c exec bash ~/scripts/RestartNetwork/RestartNetwork.sh
 #no_focus [app_id="deadd-notification-center"]
 #for_window [app_id="deadd-notification-center"] move right 625px, move up 350px
 #for_window [app_id="deadd-notification-center"] border pixel 0, sticky enable
+#
+#
+#
+#
+exec_always /home/salman/config/scripts/import-gsettings \
+    gtk-theme:gtk-theme-name \
+    icon-theme:gtk-icon-theme-name \
+    cursor-theme:gtk-cursor-theme-name

@@ -38,11 +38,13 @@ set laststatus=2
 
 "to highlight current line
 set cursorline
-
+ 
 "to sync vim clipboard with sys primary clipboard
 set clipboard=unnamed,unnamedplus
+"for wayland clipboard
+
 "to prevent clearing clipboard on exit
-autocmd VimLeave * call system("xsel -ib", getreg('+'))
+"autocmd VimLeave * call system("xsel -ib", getreg('+'))
 
 "search as characters are entered
 set incsearch
