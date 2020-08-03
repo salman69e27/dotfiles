@@ -7,13 +7,14 @@
 	"margin-left": 110,
 	"margin-right": 110,
     "modules-left": [
-        "sway/workspaces"
+		"sway/workspaces",
+		"sway/mode"
     ],
     "modules-center": [
-        "clock"
+		"clock"
     ],
     "modules-right": [
-        "idle_inhibitor",
+		"idle_inhibitor",
 		"pulseaudio",
 		"battery"
     ],
@@ -47,14 +48,10 @@
 			"8": ""
 		}
     },
-    "custom/spotify": {
-        "interval": 2,
-        "format": " {}",
-        "return-type": "json",
-        "exec": "~/.config/waybar/modules/spotify.sh --title",
-        "exec-if": "pgrep spotify",
-        "escape": true
-    },
+	"sway/mode": {
+		"format": "{}",
+		"max-length": 50
+	},
     "clock": {
         "interval": 1,
         "format": "{:%a, %b %d	%H:%M:%S}",

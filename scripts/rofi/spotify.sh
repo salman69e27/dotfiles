@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rofi_command="rofi -theme /home/salman/scripts/rofi/themes/spotify.rasi"
+rofi_command="rofi -theme ~/.config/scripts/rofi/themes/spotify.rasi"
 # Gets the current status of spotify (for us to parse it later on)
 status="$(qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get org.mpris.MediaPlayer2.Player PlaybackStatus)"
 # Defines the Play / Pause option content

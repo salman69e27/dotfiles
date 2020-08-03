@@ -33,8 +33,9 @@
 #window {
   width: 31%;
   height: 19%;
-  x-offset: -68.4%;
-  y-offset: -3.4%;
+  x-offset: -33.2%;
+  y-offset: -36.4%;
+  location: center;
 }
 
 /* ########### */

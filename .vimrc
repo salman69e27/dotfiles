@@ -182,6 +182,8 @@ autocmd Filetype python call SetJupyterKeyBindings()
 autocmd Filetype python let g:python_highlight_all = 1
 autocmd Filetype python Python3Syntax
 
+autocmd BufRead,BufNewFile *.conf setfiletype conf
+
 "functions
 "-----------------------------------------------------------------"
 function KeepClipboardSuspend()

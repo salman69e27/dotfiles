@@ -17,11 +17,10 @@
 
 
 #window {
-    margin-left: 40px;
-    margin-right: 0;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 10px 0 0 10px;
+    margin-left: 0;
+    margin-right: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
     transition: none;
     font-size: 12px;
 }
@@ -175,12 +174,19 @@ window#waybar {
 }
 
 #custom-spotify {
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 10px;
-    padding-right: 10px;
+    margin-left: 4;
+    padding-left: 4px;
+    padding-right: 4px;
     transition: none;
     font-size: 12px;
+}
+
+#custom-spotify-rofi-lyrics {
+    padding-left: 4px;
+    padding-right: 4px;
+    transition: none;
+    font-size: 12px;
+	font-family: FontAwesome;
 }
 
 #custom-spotify_previous {
