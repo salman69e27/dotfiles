@@ -20,23 +20,23 @@
     ],
 
     "pulseaudio": {
-        "scroll-step": 5,
-        "format": "{icon} {volume}%",
-        "format-alt": "{volume} {icon}",
-        "format-alt-click": "click-right",
-        "format-muted": " Muted",
-        "format-icons": {
-            "default": ["", "", "", "", "", ""]
-        },
-        "on-click": "pavucontrol",
-        "tooltip": true
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-alt": "{volume} {icon}",
+		"format-alt-click": "click-right",
+		"format-muted": " Muted",
+		"format-icons": {
+			"default": ["", "", "", "", "", ""]
+		},
+		"on-click": "pamixer -t",
+		"tooltip": true
     },
     "sway/workspaces": {
 		"format": "{icon}",
-        "disable-scroll-wraparound": true,
-        "enable-bar-scroll": false,
-        "smooth-scrolling-threshold": 20,
-        "all-outputs": true,
+		"disable-scroll-wraparound": true,
+		"enable-bar-scroll": false,
+		"smooth-scrolling-threshold": 20,
+		"all-outputs": true,
 		"format-icons": {
 			"1": "",
 			"2": "",
@@ -113,25 +113,25 @@
         "exec": "~/.config/waybar/modules/temperatures.sh --nvme"
     },
     "backlight": {
-        "format": "{icon}",
-        "format-alt": "{percent}% {icon}",
-        "format-alt-click": "click-right",
-        "format-icons": ["", ""],
-        "on-scroll-down": "light -A 1",
-        "on-scroll-up": "light -U 1"
+		"format": "{icon}",
+		"format-alt": "{percent}% {icon}",
+		"format-alt-click": "click-right",
+		"format-icons": ["", ""],
+		"on-scroll-down": "light -A 1",
+		"on-scroll-up": "light -U 1"
     },
     "battery": {
         "states": {
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-critical": "{icon} {capacity}%",
-        "format-warning": "{icon} {capacity}%",
-        "format-fd": "{icon}  {capacity}% ",
-        "format-charging": " {capacity}% ",
-        "format-plugged": " {capacity}% ",
-        "format-icons": ["", "", "", "", ""]
+		"format": "{icon} {capacity}%",
+		"format-critical": "{icon} {capacity}%",
+		"format-warning": "{icon} {capacity}%",
+		"format-fd": "{icon} {capacity}% ",
+		"format-charging": " {capacity}% ",
+		"format-plugged": " {capacity}% ",
+		"format-icons": ["", "", "", "", ""]
     },
     "idle_inhibitor": {
         "format": "{icon} ",
