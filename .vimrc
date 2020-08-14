@@ -159,6 +159,8 @@ endif
 imap <F9> <ESC>:w<CR><ESC>:make<CR>
 nmap <F9> <ESC>:w<CR><ESC>:make<CR>
 
+autocmd FileType sh       nmap <F5> <ESC>:w<CR><ESC>:!bash %<CR>
+autocmd FileType sh       imap <F5> <ESC>:w<CR><ESC>:!bash %<CR>
 autocmd FileType c          nmap <F5> <ESC>:w<CR><ESC>:!./%<<CR>
 autocmd FileType c          imap <F5> <ESC>:w<CR><ESC>:!./%<<CR>
 autocmd FileType cpp        nmap <F5> <ESC>:w<CR><ESC>:!./%<<CR>
@@ -175,8 +177,8 @@ autocmd FileType perl       nmap <F5> <ESC>:w<CR><ESC>:!perl %<CR>
 autocmd FileType perl       imap <F5> <ESC>:w<CR><ESC>:!perl %<CR>
 autocmd FileType cpp 		nmap <F8> <ESC>:w<CR><ESC>:!g++ -DLOCAL -std=gnu++11 -Wshadow -g -O2 -Wall -Wno-unused-result -o '%:r' '%'<CR>
 autocmd FileType cpp 		imap <F8> <ESC>:w<CR><ESC>:!g++ -DLOCAL -std=gnu++11 -Wshadow -g -O2 -Wall -Wno-unused-result -o '%:r' '%'<CR>
-autocmd FileType tex      imap <F5> <ESC>:w<CR><ESC>:!pdflatex %<CR> 
-autocmd FileType tex      nmap <F5> <ESC>:w<CR><ESC>:!pdflatex %<CR> 
+autocmd FileType tex      	imap <F5> <ESC>:w<CR><ESC>:!pdflatex '%'<CR> 
+autocmd FileType tex      	nmap <F5> <ESC>:w<CR><ESC>:!pdflatex '%'<CR> 
 
 autocmd Filetype python call SetJupyterKeyBindings()
 autocmd Filetype python let g:python_highlight_all = 1

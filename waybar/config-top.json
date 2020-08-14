@@ -54,7 +54,7 @@
     },
 	"cpu": {
 		"interval": 1,
-		"format":  " {}%",
+		"format":  " {usage}%",
 		"max-length": 10
 	},
     "tray": {
@@ -62,13 +62,15 @@
         "icon-size": 18
     },
     "custom/spotify": {
-		"interval": 2,
+		"interval": 1,
 		"format": "{}",
 		"exec": "python3 ~/.config/scripts/spotify/spotify_status.py",
+		"exec-if": "pgrep spotify",
 		"on-click": "bash ~/.config/scripts/rofi/spotify.sh"
     },
     "custom/spotify-rofi-lyrics": {
-		"format": "",
+		"exec": "printf ",
+		"exec-if": "pgrep spotify",
 		"on-click": "cat ~/.config/scripts/spotify-rofi-lyrics/cur_lyrics | rofi -theme ~/.config/scripts/rofi/themes/lyrics.rasi -p 'Search lyrics' -dmenu"
     },
     "custom/spotify_previous": {
