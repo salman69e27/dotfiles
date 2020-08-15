@@ -1,0 +1,102 @@
+[{
+    "layer": "top",
+    "position": "top",
+ 	"min-height": 0,
+    "height": 25,
+    "gaps": 0,
+	"margin-left": 110,
+	"margin-right": 110,
+    "modules-left": [
+		"custom/spotify",
+		"custom/spotify-rofi-lyrics"
+    ],
+    "modules-center": [
+		"network",
+		"temperature",
+		"cpu",
+		"memory"
+    ],
+    "modules-right": [
+		"sway/window"
+    ],
+	"network": {
+		"interface": "wlp3s0",
+		"format": "{ifname}",
+		"format-wifi": " {essid} ({signalStrength}%)",
+		"format-ethernet": "{ifname} ",
+		"format-disconnected": "",
+		"tooltip-format": "{ifname}",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+		"tooltip-format-ethernet": "{ifname} ",
+		"tooltip-format-disconnected": "Disconnected",
+		"max-length": 50
+	},
+	"sway/window": {
+		"format": "{}",
+		"max-length": 50
+	},
+	"memory": {
+		"interval": 1,
+		"format": " {}%",
+		"max-length": 10
+	},
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{icon} {volume}%",
+        "format-alt": "{volume} {icon}",
+        "format-alt-click": "click-right",
+        "format-muted": " Muted",
+        "format-icons": {
+            "default": ["", "", "", "", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "tooltip": true
+    },
+	"cpu": {
+		"interval": 1,
+		"format":  " {usage}%",
+		"max-length": 10
+	},
+    "tray": {
+        "spacing": 5,
+        "icon-size": 18
+    },
+    "custom/spotify": {
+		"interval": 1,
+		"format": "{}",
+		"exec": "python3 ~/.config/scripts/spotify/spotify_status.py",
+		"exec-if": "pgrep spotify",
+		"on-click": "bash ~/.config/scripts/rofi/spotify.sh"
+    },
+    "custom/spotify-rofi-lyrics": {
+		"exec": "printf ",
+		"exec-if": "pgrep spotify",
+		"on-click": "cat ~/.config/scripts/spotify-rofi-lyrics/cur_lyrics | rofi -theme ~/.config/scripts/rofi/themes/lyrics.rasi -p 'Search lyrics' -dmenu"
+    },
+    "custom/spotify_previous": {
+        "format": "",
+        "on-click": "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous",
+        "exec-if": "pgrep spotify",
+        "tooltip": false
+    },
+    "custom/spotify_next": {
+        "format": "",
+        "on-click": "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next",
+        "exec-if": "pgrep spotify",
+        "tooltip": false
+    },
+    "custom/spotify_playpause": {
+        "format": "",
+        "on-click": "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause",
+        "exec-if": "pgrep spotify",
+        "tooltip": false
+    },    
+    "temperature": {
+        "hwmon-path": "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon3/temp1_input",
+		"interval":1,
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-critical": " {icon} {temperatureC}°C",
+        "format-icons": [""]
+    }
+}]

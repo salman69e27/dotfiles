@@ -40,44 +40,31 @@ scrollback_lines = 10000
 # "off", "left" or "right"
 #scrollbar = off
 [colors]
+cursor = #d8dee9
+cursor_foreground = #2e3440
 
-# special
-foreground      = #ffffff
-foreground_bold = #ffffff
-cursor          = #ffffff
-background      = #040610
+foreground = #d8dee9
+foreground_bold = #d8dee9
+background = #282C34
 
-# black
-color0  = #151515
-color8  = #696969
+highlight = #4c566a
 
-# red
-color1  = #ff8eaf
-color9  = #ed4c7a
-
-# green
-color2  = #a6e25f
-color10 = #a6e179
-
-# yellow
-color3  = #f8e578
-color11 = #ffdf6b
-
-# blue
-color4  = #a6e2f0
-color12 = #79d2ff
-
-# magenta
-color5  = #e85b92
-color13 = #bb5d79
-
-# cyan
-color6  = #5f868f
-color14 = #87a8af
-
-# white
-color7  = #d5f1f2
-color15 = #e2f1f6
+color0  = #3b4252
+color1  = #bf616a
+color2  = #a3be8c
+color3  = #ebcb8b
+color4  = #81a1c1
+color5  = #b48ead
+color6  = #88c0d0
+color7  = #e5e9f0
+color8  = #4c566a
+color9  = #bf616a
+color10 = #a3be8c
+color11 = #ebcb8b
+color12 = #81a1c1
+color13 = #b48ead
+color14 = #8fbcbb
+color15 = #eceff4
 
 [hints]
 #font = Monospace 12

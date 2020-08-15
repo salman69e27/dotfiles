@@ -18,9 +18,9 @@ The code is somewhat messy but I won't bother cleaning it as long as everything 
 
 /* Variables */
 :root {
-	--color-bg: #1c1c1c;
-	--color-hover: #252525;
-	--color-selected: #333333;
+	--color-bg: rgba(40, 44, 52, 1);
+	--color-hover: rgba(36, 40, 48, 1);
+	--color-selected: rgba(30, 36, 45, 1);
 	--close-button-opacity-nonhover: 0.2;
 	--transition-speed: 0.3s;
 

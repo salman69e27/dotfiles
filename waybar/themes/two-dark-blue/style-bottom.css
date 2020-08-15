@@ -1,7 +1,7 @@
-@define-color bg rgba(40, 44, 52, 1);
-@define-color ac rgba(200, 200, 202, 1);
-@define-color fg rgba(157, 163, 176, 1);
-@define-color fg-alt rgba(60, 64, 72, 1);
+@define-color bg rgba(4, 6, 16, 1);
+@define-color ac rgba(213, 197, 192, 1);
+@define-color fg rgba(174, 151, 147, 1);
+@define-color fg-alt rgba(12, 16, 42, 1);
 
 * {
     border:        none;
@@ -17,17 +17,19 @@
 
 
 #window {
-    margin-left: 0;
-    margin-right: 4px;
-    padding-left: 4px;
-    padding-right: 4px;
+    margin-left: 40px;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px 0 0 10px;
     transition: none;
     font-size: 12px;
 }
 
 window#waybar {
     background: @bg;
-	border-radius: 0 0 6px 6px;
+	border-bottom: 2px solid @ac;
+	border-radius: 6px 6px 0 0;
 	color: @fg;
 }
 /*window#waybar.solo {*/
@@ -36,7 +38,7 @@ window#waybar {
 /*}*/
 
 #workspaces {
-	padding-left: 4px;
+	margin-left: 4px;
     transition: none;
     /*border-top: 1px solid #ff79c6;*/
 }
@@ -64,10 +66,20 @@ window#waybar {
     color:      rgba(238, 46, 36, 1);
 }
 
+#mode {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+    transition: none;
+    font-size: 12px;
+}
+
 /*#mode, #battery, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-spotify, #custom-weather {*/
     /*margin:     0px 6px 0px 90px;*/
     /*min-width:  5px;*/
 /*}*/
+
 
 #idle_inhibitor {
     margin-left: 0;
@@ -84,9 +96,10 @@ window#waybar {
 #network {
     margin-left: 0;
     margin-right: 0;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
     transition: none;
+    background: rgba(0, 60, 60, 1);
     font-size: 12px;
 }
 
@@ -110,20 +123,19 @@ window#waybar {
 }
 
 #temperature {
-    padding-left: 4px;
-    padding-right: 4px;
+    margin-left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
     transition: none;
+    background: rgba(0, 60, 60, 1);
     font-size: 12px;
 }
 
-#temperature.critical {
-	color: red;
-}
-
 #custom-temperature_cpu {
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
     transition: none;
+    background: rgba(0, 60, 60, 1);
     font-size: 12px;
 }
 
@@ -173,19 +185,12 @@ window#waybar {
 }
 
 #custom-spotify {
-    margin-left: 4;
-    padding-left: 4px;
-    padding-right: 4px;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
     transition: none;
     font-size: 12px;
-}
-
-#custom-spotify-rofi-lyrics {
-    padding-left: 4px;
-    padding-right: 4px;
-    transition: none;
-    font-size: 12px;
-	font-family: FontAwesome;
 }
 
 #custom-spotify_previous {
@@ -313,13 +318,15 @@ window#waybar {
 #cpu {
     margin-left: 0;
     margin-right: 0;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
     transition: none;
+    background: rgba(0, 60, 60, 1);
     font-size: 12px;
 }
 
 #battery {
+	margin-right: 4px;
     padding-left: 4px;
     padding-right: 4px;
     transition: none;
@@ -328,9 +335,10 @@ window#waybar {
 #memory {
     margin-left: 0;
     margin-right: 0;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
     transition: none;
+    background: rgba(0, 60, 60, 1);
     font-size: 12px;
 }
 

@@ -53,64 +53,16 @@
 		"max-length": 50
 	},
     "clock": {
-        "interval": 1,
-        "format": "{:%a, %b %d	%H:%M:%S}",
-        "tooltip": false
+		"interval": 1,
+		"format": "{:%a, %b %d	%H:%M:%S}",
+		"tooltip": false
     },
-    "custom/spotify_previous": {
-        "format": "",
-        "on-click": "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous",
-        "exec-if": "pgrep spotify",
-        "tooltip": false
-    },
-    "custom/spotify_next": {
-        "format": "",
-        "on-click": "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next",
-        "exec-if": "pgrep spotify",
-        "tooltip": false
-    },
-    "custom/spotify_playpause": {
-        "format": "",
-        "on-click": "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause",
-        "exec-if": "pgrep spotify",
-        "tooltip": false
-    },    
     "temperature": {
-        "hwmon-path": "/sys/devices/platform/asus-wmi-sensors/hwmon/hwmon1/temp3_input",
-        "critical-threshold": 80,
-        "format": "{icon} CM {temperatureC}°C",
-        "format-critical": " {icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
-    },
-    "custom/temperature_cpu": {
-        "interval": 10,
-        "format": " CPU {}",
-        "return-type": "json",
-        "exec": "~/.config/waybar/modules/temperatures.sh --cpu"
-    },
-    "custom/temperature_gpu": {
-        "interval": 10,
-        "format": " GPU {}",
-        "return-type": "json",
-        "exec": "~/.config/waybar/modules/temperatures.sh --gpu"
-    },
-    "custom/temperature_gpu2": {
-        "interval": 10,
-        "format": " GPU2 {}",
-        "return-type": "json",
-        "exec": "~/.config/waybar/modules/temperatures.sh --gpu2"
-    },
-    "custom/temperature_ssd": {
-        "interval": 10,
-        "format": " SSD {}",
-        "return-type": "json",
-        "exec": "~/.config/waybar/modules/temperatures.sh --ssd"
-    },
-    "custom/temperature_nvme": {
-        "interval": 10,
-        "format": " NVMe {}",
-        "return-type": "json",
-        "exec": "~/.config/waybar/modules/temperatures.sh --nvme"
+		"hwmon-path": "/sys/devices/platform/asus-wmi-sensors/hwmon/hwmon1/temp3_input",
+		"critical-threshold": 80,
+		"format": "{icon} CM {temperatureC}°C",
+		"format-critical": " {icon} {temperatureC}°C",
+		"format-icons": ["", "", ""]
     },
     "backlight": {
 		"format": "{icon}",
@@ -121,10 +73,10 @@
 		"on-scroll-up": "light -U 1"
     },
     "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
 		"format": "{icon} {capacity}%",
 		"format-critical": "{icon} {capacity}%",
 		"format-warning": "{icon} {capacity}%",
@@ -134,15 +86,15 @@
 		"format-icons": ["", "", "", "", ""]
     },
     "idle_inhibitor": {
-        "format": "{icon} ",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        },
-        "tooltip": false
+		"format": "{icon} ",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		},
+		"tooltip": false
     },
-    "tray": {
-        "spacing": 5,
-        "icon-size": 18
-    }
+	"tray": {
+		"spacing": 5,
+		"icon-size": 18
+	}
 }]

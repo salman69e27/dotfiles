@@ -116,6 +116,7 @@ Plugin 'pgavlin/pulumi.vim'
 Plugin 'vim-python/python-syntax'
 Plugin 'cocopon/iceberg.vim'
 Plugin 'salman69e27/moonlight.vim'
+Plugin 'rakr/vim-one'
 
 call vundle#end()
 
@@ -126,11 +127,11 @@ filetype plugin indent on
 set encoding=utf-8
 
 "set colorscheme
-colorscheme moonlight
+colorscheme one
 set background=dark
 
 let g:lightline = {
-      \ 'colorscheme': 'iceberg',
+      \ 'colorscheme': 'one',
       \ }
 
 "python autocompletion

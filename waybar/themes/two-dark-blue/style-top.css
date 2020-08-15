@@ -1,7 +1,7 @@
-@define-color bg rgba(40, 44, 52, 1);
-@define-color ac rgba(200, 200, 202, 1);
-@define-color fg rgba(157, 163, 176, 1);
-@define-color fg-alt rgba(60, 64, 72, 1);
+@define-color bg rgba(4, 6, 16, 1);
+@define-color ac rgba(213, 197, 192, 1);
+@define-color fg rgba(174, 151, 147, 1);
+@define-color fg-alt rgba(12, 16, 42, 1);
 
 * {
     border:        none;
@@ -27,6 +27,7 @@
 
 window#waybar {
     background: @bg;
+	border-top: 2px solid @ac;
 	border-radius: 0 0 6px 6px;
 	color: @fg;
 }
