@@ -50,7 +50,7 @@
     },
 	"sway/mode": {
 		"format": "{}",
-		"max-length": 50
+		"max-length": 80
 	},
     "clock": {
 		"interval": 1,

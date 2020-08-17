@@ -19,10 +19,10 @@ set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym --locked XF86MonBrightnessUp exec light -S "$(light -G | awk '{ print int(($1 + .72) * 1.4) }')"
 bindsym --locked XF86MonBrightnessDown exec light -S "$(light -G | awk '{ print int($1 / 1.4) }')"
 # auto lock
-exec --no-startup-id swayidle -w \
+exec swayidle -w \
 		timeout 180 'echo $(light -G) > /tmp/CUR_BRIGHTNESS; until [ "$(light -G)" = "0.00" ]; do light -U 5; sleep 0.02; done' \
 			resume 'light -S $(cat /tmp/CUR_BRIGHTNESS); rm /tmp/CUR_BRIGHTNESS' \
-		timeout 300 'swaylock -f -c 000000' \
+		timeout 300 'swaylock -f' \
 		timeout 600 'swaymsg "output * dpms off"' \
 			resume 'swaymsg "output * dpms on"' \
 		before-sleep 'swaylock -f -c 000000'
@@ -30,10 +30,10 @@ font xft:URWGothic-Book 11
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #9da3b0 #9da3b0 #282C34 #FDF6E3
-  client.focused_inactive #282C34 #282C34 #9da3b0 #454948
-  client.unfocused        #282C34 #282C34 #9da3b0 #454948
-  client.urgent           #AC352E #AC352E #282C34 #268BD2
+  client.focused          #9da3b0 #9da3b0 #282936 #FDF6E3
+  client.focused_inactive #282936 #282936 #9da3b0 #454948
+  client.unfocused        #282936 #282936 #9da3b0 #454948
+  client.urgent           #AC352E #AC352E #282936 #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
   client.background       #2B2C2B
@@ -84,7 +84,7 @@ exec_always /home/salman/config/scripts/import-gsettings \
 bindsym $mod+Return exec terminal
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id . ~/.config/scripts/rofi/launchers/launcher.sh
+bindsym $mod+d exec . ~/.config/scripts/rofi/launchers/launcher.sh
 
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F3 exec pcmanfm
@@ -153,13 +153,28 @@ bindsym $mod+Ctrl+Left workspace prev
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# restart sway inplace
 bindsym $mod+Shift+r exec "~/.config/sway/sway-config-manager/parse-sway-configs ; swaymsg reload"
 
-# exit i3 (logs you out of your X session)
+# hide top waybar panel
+bindsym $mod+m exec "python3 ~/.config/waybar/toggle_with_keyword.py top"
+
+# Set shut down, restart and locking features
+set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown
+mode "$mode_system" {
+    bindsym l exec swaylock, mode "default"
+    bindsym e exit
+    bindsym s exec systemctl suspend, mode "default"
+    bindsym r exec systemctl reboot, mode "default"
+    bindsym Shift+s exec shutdown -h now, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+0 mode "$mode_system"
 
 # Resize window (you can also use the mouse for that)
-bindsym $mod+r mode "resize"
 mode "resize" {
 		# These bindings trigger as soon as you enter the resize mode
 		# Pressing left will shrink the window’s width.
@@ -181,6 +196,7 @@ mode "resize" {
 		bindsym Return mode "default"
 		bindsym Escape mode "default"
 }
+bindsym $mod+r mode "resize"
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
@@ -224,10 +240,13 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 bindsym $mod+Ctrl+m exec pavucontrol
-bindsym XF86AudioMicMute exec amixer set Capture toggle
-bindsym XF86AudioRaiseVolume exec pamixer -i 5 -u --allow-boost
-bindsym XF86AudioLowerVolume exec pamixer -d 5 -u --allow-boost
-bindsym XF86AudioMute exec pamixer -t
+bindsym --locked XF86AudioMicMute exec amixer set Capture toggle
+bindsym --locked XF86AudioRaiseVolume exec pamixer -i 5 -u --allow-boost
+bindsym --locked XF86AudioLowerVolume exec pamixer -d 5 -u --allow-boost
+bindsym --locked XF86AudioMute exec pamixer -t
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPrev exec playerctl previous
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -257,8 +276,6 @@ bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec_always --no-startup-id "bash /home/salman/.config/waybar/launch.sh &"
-exec --no-startup-id mako
-
-exec_always --no-startup-id ff-theme-util
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec_always "bash /home/salman/.config/waybar/launch.sh &"
+exec mako

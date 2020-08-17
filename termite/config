@@ -45,7 +45,7 @@ cursor_foreground = #2e3440
 
 foreground = #d8dee9
 foreground_bold = #d8dee9
-background = #282C34
+background = #282936
 
 highlight = #4c566a
 
