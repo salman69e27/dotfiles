@@ -1,0 +1,35 @@
+/* Firefox 57+ userChrome.css tweaks ****************************************************/
+
+
+/*Menu Button Credit*/
+/* Code from Custom CSS tweaks for Firefox 57+ by Aris (aris-addons@gmx.net)*************/
+/* Github: https://github.com/aris-t2/customcssforfx ************************************/
+/****************************************************************************************/
+
+/* Menu Button in Titlebar (Window) */
+	@import url(./css/appbutton_in_titlebar.css);
+
+/* Menu Button color (Windows) */
+	@import url(./css/appbutton_in_titlebar_autocolor.css);
+
+/* Top Pixel */
+	#TabsToolbar {
+	  margin-top: 1px;
+	}
+	
+/* No Scroll Tabs */
+	.tabbrowser-tab:not([pinned]){
+		max-width: 200px !important;
+		min-width: 10px !important;
+	}
+	.tabbrowser-tab:not([fadein]){
+		max-width: 1px !important;
+		min-width: 1px !important;
+		max-width: 1px;
+		min-width: 1px;
+	}
+	
+
+
+
+

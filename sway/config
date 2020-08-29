@@ -76,28 +76,50 @@ mode "$mode_gaps_outer" {
 }
 
 # Fix gtk_theme loading issue
-exec_always /home/salman/config/scripts/import-gsettings \
+exec_always /home/salman/.config/scripts/import-gsettings \
     gtk-theme:gtk-theme-name \
     icon-theme:gtk-icon-theme-name \
     cursor-theme:gtk-cursor-theme-name
 # start a terminal
-bindsym $mod+Return exec terminal
+bindsym $mod+Return exec termite
 
 # start program launcher
-bindsym $mod+d exec . ~/.config/scripts/rofi/launchers/launcher.sh
+bindsym $mod+d exec wofi --show drun --lines 8 --columns 2
 
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F3 exec pcmanfm
 bindsym $mod+F8 exec spotify
 bindsym $mod+F4 exec mailspring
 bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+p exec 'env LPASS_CLIPBOARD_COMMAND="wl-copy -o" dotfiles/scripts/rofi-lastpass/rofi-lastpass'
+bindsym $mod+p exec 'env LPASS_CLIPBOARD_COMMAND="wl-copy" dotfiles/scripts/rofi-lastpass/rofi-lastpass'
 
 bindsym $mod+c exec bash ~/scripts/RestartNetwork/RestartNetwork.sh
 
 ## Screenshots via grim and slurp
 bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')
 bindsym Shift+Print exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')
+
+# Open applications on specific workspaces
+assign [app_id="termite"] $ws1
+assign [app_id="firefox"] $ws2
+assign [class="Google-chrome"] $ws2
+assign [class="Chromium"] $ws2
+assign [class="Nemo"] $ws3
+assign [class="Mailspring"] $ws5
+assign [class="Joplin"] $ws5
+assign [class="vlc"] $ws7
+for_window [class="Spotify"] move to workspace $ws8
+#
+# Open specific applications in floating mode
+for_window [title="alsamixer"] floating enable border pixel 1
+for_window [title="File Transfer*"] floating enable
+for_window [class="fpakman"] floating enable
+for_window [class="GParted"] floating enable border normal
+for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Pamac-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="qt5ct"] floating enable sticky enable border normal
+for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 output * bg /home/salman/Pictures/solid_bl.jpg fill
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 3
@@ -201,6 +223,8 @@ bindsym $mod+r mode "resize"
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
+
+focus_on_window_activation focus
 input * {
     xkb_layout "us,ar"
     xkb_variant ""

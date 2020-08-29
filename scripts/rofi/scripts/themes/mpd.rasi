@@ -8,15 +8,14 @@
  */
 
 @import "colors.rasi"
-@import "colorschemes/spotify-dark.rasi"
 
 /* ########### */
 
 * {
   /* General */
   text-font:                            "Comfortaa 12";
-  icon-font:                            "FontAwesome 32";
-  icon-font-small:                      "FontAwesome 24";
+  icon-font:                            "Hurmit Nerd Font Mono 32";
+  icon-font-small:                      "Hurmit Nerd Font Mono 24";
 
   option-6-listview-spacing:            10px;
 
@@ -33,9 +32,10 @@
 #window {
   width: 31%;
   height: 19%;
-  x-offset: -33.2%;
-  y-offset: -36.4%;
+  anchor: center;
   location: center;
+  x-offset: -34%;
+  y-offset: 37.5%;
 }
 
 /* ########### */
@@ -96,7 +96,7 @@ textbox-prompt-colon {
 }
 #listview {
   spacing: @option-6-listview-spacing;
-  lines: 4;
+  lines: 6;
 }
 #element {
   font: @icon-font;

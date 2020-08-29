@@ -7,35 +7,35 @@
  *
  */
 
-@import "colors.rasi"
-@import "colorschemes/spotify-dark.rasi"
+@import "../colors.rasi"
 
 /* ########### */
 
 * {
   /* General */
-  text-font:                            "Comfortaa 12";
-  icon-font:                            "FontAwesome 32";
-  icon-font-small:                      "FontAwesome 24";
+  text-font:                            "Comfortaa 14";
+  icon-font:                            "Hurmit Nerd Font Mono 48";
+  icon-font-small:                      "Hurmit Nerd Font Mono 24";
 
   option-6-listview-spacing:            10px;
 
-  menu-window-padding:                   5px 15px;
+  menu-window-padding:                   25px 35px;
   menu-inputbar-margin:                  10px 0px;
   menu-prompt-padding:                   10px 20px 10px 20px;
   menu-prompt-margin:                    0px 0px 0px -2px;
   menu-element-border:                   0px;
-  menu-element-padding:                  10px 15px 5px -35px;
+  menu-element-padding:                  40px 50px 35px -25px;
 }
 
 /* ########### */
 
 #window {
-  width: 31%;
-  height: 19%;
-  x-offset: -33.2%;
-  y-offset: -36.4%;
+  width: 37.5%;
+  height: 35%;
+  anchor: center;
   location: center;
+  x-offset: 0%;
+  y-offset: 0%;
 }
 
 /* ########### */
@@ -87,7 +87,7 @@ textbox-prompt-colon {
 }
 #textbox-prompt-colon {
   expand: false;
-  str: "SPOTIFY";
+  str: "Battery";
   background-color: @accent;
   text-color: @background;
 }
@@ -96,7 +96,7 @@ textbox-prompt-colon {
 }
 #listview {
   spacing: @option-6-listview-spacing;
-  lines: 4;
+  lines: 3;
 }
 #element {
   font: @icon-font;
@@ -107,13 +107,14 @@ textbox-prompt-colon {
 #element.selected {
   border-color: @accent;
 }
-element.active,
-element.selected.urgent {
+element.active {
   background-color: @on;
   text-color: @background;
   border-color: @on;
 }
 element.selected.urgent {
+  background-color: @off;
+  text-color: @background;
   border-color: @accent;
 }
 element.urgent,
@@ -123,6 +124,8 @@ element.selected.active {
   border-color: @off;
 }
 element.selected.active {
+  background-color: @on;
+  text-color: @background;
   border-color: @accent;
 }
 

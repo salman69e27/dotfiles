@@ -8,15 +8,14 @@
  */
 
 @import "colors.rasi"
-@import "colorschemes/spotify-dark.rasi"
 
 /* ########### */
 
 * {
   /* General */
   text-font:                            "Comfortaa 12";
-  icon-font:                            "FontAwesome 32";
-  icon-font-small:                      "FontAwesome 24";
+  icon-font:                            "Hurmit Nerd Font Mono 32";
+  icon-font-small:                      "Hurmit Nerd Font Mono 24";
 
   option-6-listview-spacing:            10px;
 
@@ -24,18 +23,15 @@
   menu-inputbar-margin:                  10px 0px;
   menu-prompt-padding:                   10px 20px 10px 20px;
   menu-prompt-margin:                    0px 0px 0px -2px;
-  menu-element-border:                   0px;
-  menu-element-padding:                  10px 15px 5px -35px;
+  menu-element-border:                   10px;
+  menu-element-padding:                  3px 8px -1px -40px;
 }
 
 /* ########### */
 
 #window {
-  width: 31%;
-  height: 19%;
-  x-offset: -33.2%;
-  y-offset: -36.4%;
-  location: center;
+  width: 34.5%;
+  height: 20%;
 }
 
 /* ########### */
@@ -87,7 +83,7 @@ textbox-prompt-colon {
 }
 #textbox-prompt-colon {
   expand: false;
-  str: "SPOTIFY";
+  str: "Apps";
   background-color: @accent;
   text-color: @background;
 }
@@ -96,7 +92,7 @@ textbox-prompt-colon {
 }
 #listview {
   spacing: @option-6-listview-spacing;
-  lines: 4;
+  lines: 6;
 }
 #element {
   font: @icon-font;

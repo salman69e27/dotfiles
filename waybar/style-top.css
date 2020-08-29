@@ -316,6 +316,7 @@ window#waybar {
     padding-left: 4px;
     padding-right: 4px;
     transition: none;
+	font-family: FontAwesome;
     font-size: 12px;
 }
 
@@ -331,6 +332,7 @@ window#waybar {
     padding-left: 4px;
     padding-right: 4px;
     transition: none;
+	font-family: FontAwesome;
     font-size: 12px;
 }
 

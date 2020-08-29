@@ -11,14 +11,14 @@ else
 fi
 
 stop=""
-next=""
-previous=""
+next=""
+previous=""
 
 # Variable passed to rofi
 options="$previous\n$play_pause\n$stop\n$next"
 
 # Get the current playing song
-current=$(python3 ~/scripts/spotify/spotify_status.py)
+current=$(python3 ~/.config/scripts/spotify/spotify_status.py)
 # If spotify isn't running it will return an empty string, we don't want to display that
 if [[ -z "$current" ]]; then
     current="-"

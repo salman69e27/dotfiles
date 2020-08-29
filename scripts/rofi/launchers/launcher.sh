@@ -16,4 +16,4 @@
 
 style="style_normal_grid"
 
-rofi -no-lazy-grab -show drun -theme launchers/"$style".rasi
+rofi -no-lazy-grab -show drun -theme /home/salman/.config/scripts/rofi/launchers/"$style".rasi
