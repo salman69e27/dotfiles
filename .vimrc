@@ -117,6 +117,12 @@ Plugin 'vim-python/python-syntax'
 Plugin 'cocopon/iceberg.vim'
 Plugin 'salman69e27/moonlight.vim'
 Plugin 'rakr/vim-one'
+Plugin 'gryf/wombat256grf'
+Plugin 'romainl/Apprentice'
+Plugin 'jpo/vim-railscasts-theme'
+Plugin 'eemed/sitruuna.vim'
+Plugin 'Marfisc/vorange'
+Plugin 'srcery-colors/srcery-vim'
 
 call vundle#end()
 
@@ -127,7 +133,7 @@ filetype plugin indent on
 set encoding=utf-8
 
 "set colorscheme
-colorscheme one
+colorscheme srcery
 set background=dark
 
 let g:lightline = {

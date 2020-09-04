@@ -20,10 +20,10 @@ bindsym --locked XF86MonBrightnessUp exec light -S "$(light -G | awk '{ print in
 bindsym --locked XF86MonBrightnessDown exec light -S "$(light -G | awk '{ print int($1 / 1.4) }')"
 # auto lock
 exec swayidle -w \
-		timeout 180 'echo $(light -G) > /tmp/CUR_BRIGHTNESS; until [ "$(light -G)" = "0.00" ]; do light -U 5; sleep 0.02; done' \
+		timeout 300 'echo $(light -G) > /tmp/CUR_BRIGHTNESS; until [ "$(light -G)" = "0.00" ]; do light -U 5; sleep 0.02; done' \
 			resume 'light -S $(cat /tmp/CUR_BRIGHTNESS); rm /tmp/CUR_BRIGHTNESS' \
-		timeout 300 'swaylock -f' \
-		timeout 600 'swaymsg "output * dpms off"' \
+		timeout 600 'swaylock -f' \
+		timeout 720 'swaymsg "output * dpms off"' \
 			resume 'swaymsg "output * dpms on"' \
 		before-sleep 'swaylock -f -c 000000'
 font xft:URWGothic-Book 11
@@ -84,7 +84,7 @@ exec_always /home/salman/.config/scripts/import-gsettings \
 bindsym $mod+Return exec termite
 
 # start program launcher
-bindsym $mod+d exec wofi --show drun --lines 8 --columns 2
+bindsym $mod+d exec wofi --show drun --lines 8 --columns e
 
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F3 exec pcmanfm
@@ -109,7 +109,7 @@ assign [class="Mailspring"] $ws5
 assign [class="Joplin"] $ws5
 assign [class="vlc"] $ws7
 for_window [class="Spotify"] move to workspace $ws8
-#
+
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [title="File Transfer*"] floating enable
@@ -120,7 +120,10 @@ for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-output * bg /home/salman/Pictures/solid_bl.jpg fill
+
+# color picker
+bindsym $mod+Shift+p exec swaynag -t warning -m "$(grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:-)"
+output * bg /home/salman/Pictures/Warm2.jpg fill
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 3
 default_floating_border normal
@@ -179,7 +182,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r exec "~/.config/sway/sway-config-manager/parse-sway-configs ; swaymsg reload"
 
 # hide top waybar panel
-bindsym $mod+m exec "python3 ~/.config/waybar/toggle_with_keyword.py top"
+bindsym $mod+m exec python3 /home/salman/.config/waybar/toggle_with_keyword.py bottom "waybar -c /home/salman/.config/waybar/config-bottom.json -s /home/salman/.config/waybar/style-bottom.css &"
 
 # Set shut down, restart and locking features
 set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown

@@ -1,102 +1,122 @@
 [{
-    "layer": "top",
+    "layer": "bottom",
     "position": "top",
  	"min-height": 0,
-    "height": 25,
+    "height": 30,
     "gaps": 0,
-	"margin-left": 110,
-	"margin-right": 110,
+	"margin-left": 50,
+	"margin-right": 50,
+	"margin-top": 6,
     "modules-left": [
-		"custom/spotify",
-		"custom/spotify-rofi-lyrics"
+		"sway/workspaces",
+		"sway/mode"
     ],
     "modules-center": [
-		"network",
-		"temperature",
-		"cpu",
-		"memory"
+		"clock"
     ],
     "modules-right": [
-		"sway/window"
+		"idle_inhibitor",
+		"custom/separator",
+		"memory",
+		"custom/separator",
+		"temperature",
+		"custom/separator",
+		"cpu",
+		"custom/separator",
+		"pulseaudio",
+		"custom/separator",
+		"battery"
     ],
-	"network": {
-		"interface": "wlp3s0",
-		"format": "{ifname}",
-		"format-wifi": " {essid} ({signalStrength}%)",
-		"format-ethernet": "{ifname} ",
-		"format-disconnected": "",
-		"tooltip-format": "{ifname}",
-		"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-		"tooltip-format-ethernet": "{ifname} ",
-		"tooltip-format-disconnected": "Disconnected",
-		"max-length": 50
-	},
-	"sway/window": {
-		"format": "{}",
-		"max-length": 50
-	},
-	"memory": {
-		"interval": 1,
-		"format": " {}%",
-		"max-length": 10
-	},
+    "custom/separator": {
+		"format": " / "
+    },
     "pulseaudio": {
         "scroll-step": 5,
-        "format": "{icon} {volume}%",
+        "format": "{icon}  {volume}%",
         "format-alt": "{volume} {icon}",
         "format-alt-click": "click-right",
-        "format-muted": " Muted",
+        "format-muted": "  Muted",
         "format-icons": {
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol",
         "tooltip": true
     },
-	"cpu": {
+	"memory": {
 		"interval": 1,
-		"format":  " {usage}%",
+		"format": "  {}%",
 		"max-length": 10
 	},
-    "tray": {
-        "spacing": 5,
-        "icon-size": 18
-    },
-    "custom/spotify": {
+	"cpu": {
 		"interval": 1,
+		"format":  "  {usage}%",
+		"max-length": 10
+	},
+    "sway/workspaces": {
+		"format": "{icon}",
+		"disable-scroll-wraparound": true,
+		"enable-bar-scroll": false,
+		"smooth-scrolling-threshold": 20,
+		"all-outputs": true,
+		"format-icons": {
+			"1": "",
+			"2": "",
+			"3": "",
+			"4": "",
+			"5": "",
+			"6": "",
+			"7": "",
+			"8": ""
+		}
+    },
+	"sway/mode": {
 		"format": "{}",
-		"exec": "python3 ~/.config/scripts/spotify/spotify_status.py",
-		"exec-if": "pgrep spotify",
-		"on-click": "bash ~/.config/scripts/rofi/spotify.sh"
+		"max-length": 80
+	},
+    "clock": {
+		"interval": 1,
+		"format": "{:%a, %b %d	%H:%M:%S}",
+		"tooltip": false
     },
-    "custom/spotify-rofi-lyrics": {
-		"exec": "printf ",
-		"exec-if": "pgrep spotify",
-		"on-click": "cat ~/.config/scripts/spotify-rofi-lyrics/cur_lyrics | rofi -theme ~/.config/scripts/rofi/themes/lyrics.rasi -p 'Search lyrics' -dmenu"
-    },
-    "custom/spotify_previous": {
-        "format": "",
-        "on-click": "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous",
-        "exec-if": "pgrep spotify",
-        "tooltip": false
-    },
-    "custom/spotify_next": {
-        "format": "",
-        "on-click": "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next",
-        "exec-if": "pgrep spotify",
-        "tooltip": false
-    },
-    "custom/spotify_playpause": {
-        "format": "",
-        "on-click": "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause",
-        "exec-if": "pgrep spotify",
-        "tooltip": false
-    },    
     "temperature": {
         "hwmon-path": "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon3/temp1_input",
 		"interval":1,
         "critical-threshold": 80,
-        "format": "{icon} {temperatureC}°C",
-        "format-critical": " {icon} {temperatureC}°C",
+        "format": "{icon}  {temperatureC}°C",
+        "format-critical": " {icon}  {temperatureC}°C",
         "format-icons": [""]
-    }
+    },
+    "backlight": {
+		"format": "{icon}",
+		"format-alt": "{percent}% {icon}",
+		"format-alt-click": "click-right",
+		"format-icons": ["", ""],
+		"on-scroll-down": "light -A 1",
+		"on-scroll-up": "light -U 1"
+    },
+    "battery": {
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon}  {capacity}%",
+		"format-critical": "{icon} {capacity}%",
+		"format-warning": "{icon} {capacity}%",
+		"format-fd": "{icon} {capacity}% ",
+		"format-charging": "  {capacity}% ",
+		"format-plugged": "  {capacity}% ",
+		"format-icons": ["", "", "", "", ""]
+    },
+    "idle_inhibitor": {
+		"format": "{icon} ",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		},
+		"tooltip": false
+    },
+	"tray": {
+		"spacing": 5,
+		"icon-size": 18
+	}
 }]
