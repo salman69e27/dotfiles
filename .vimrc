@@ -53,8 +53,8 @@ let g:clipboard = {
       \      '*': 'wl-copy --foreground --type text/plain --primary',
       \    },
       \   'paste': {
-      \      '+': {-> systemlist('wl-paste --no-newline | tr -d "\r"')},
-      \      '*': {-> systemlist('wl-paste --no-newline --primary | tr -d "\r"')},
+      \      '+': {-> systemlist('wl-paste | tr -d "\r"')},
+      \      '*': {-> systemlist('wl-paste --primary | tr -d "\r"')},
       \   },
       \   'cache_enabled': 1,
       \ }
