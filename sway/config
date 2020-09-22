@@ -15,6 +15,9 @@ set $ws8 8
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+
+## applications
+set $terminal kitty
 # set brightness logarithmically by factor 1.4
 bindsym --locked XF86MonBrightnessUp exec light -S "$(light -G | awk '{ print int(($1 + .72) * 1.4) }')"
 bindsym --locked XF86MonBrightnessDown exec light -S "$(light -G | awk '{ print int($1 / 1.4) }')"
@@ -81,7 +84,7 @@ exec_always /home/salman/.config/scripts/import-gsettings \
     icon-theme:gtk-icon-theme-name \
     cursor-theme:gtk-cursor-theme-name
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec $terminal
 
 # start program launcher
 bindsym $mod+d exec wofi --show drun --lines 8 --columns e
@@ -111,7 +114,7 @@ assign [class="vlc"] $ws7
 for_window [class="Spotify"] move to workspace $ws8
 
 # Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable border pixel 1
+for_window [title="^Picture-in-Picture$"] floating enable border normal
 for_window [title="File Transfer*"] floating enable
 for_window [class="fpakman"] floating enable
 for_window [class="GParted"] floating enable border normal
@@ -260,6 +263,9 @@ bindsym $mod+Shift+s sticky toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+# focus the parent container
+bindsym $mod+Shift+a focus child
+
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
@@ -306,3 +312,4 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always "bash /home/salman/.config/waybar/launch.sh &"
 exec mako
+exec "bash ~/.xdg-desktop-portal-launch.sh"

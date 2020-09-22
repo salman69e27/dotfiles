@@ -1,0 +1,292 @@
+/*
+heavily inspired (more like copy pasted) from /u/llamasking's Firefox userChrome.css and flying-fox theme
+*/
+
+@import "global/variables.css";
+@import "global/global.css";
+@import "icons/icons.css";
+@import "tabbar/tabbar.css";
+@import "navbar/navbar.css";
+@import "personalbar/personalbar.css";
+@import "popup/popup.css";
+@import "urlbar/urlbar.css";
+@import "findbar/findbar.css";
+@import "vars.css";
+
+/* show bookmarks toolbar on new tab only */
+#main-window #PersonalToolbar {
+    visibility: collapse !important;
+    z-index: 1 !important;
+    position: relative !important;
+    margin-left: var(--initial-width); /* shift toolbar to the right based on initial width */
+    margin-top: var(--toolbar-height) !important;
+}
+
+#main-window[title^="Firefox Developer Edition"] #PersonalToolbar {
+    visibility: visible !important;
+    margin-top: -1px !important;
+}
+
+/* Menu Button: The somewhat important button that nobody thinks about */
+#PanelUI-button {
+	display: block !important;
+	position: fixed !important;
+	right: 0px !important;
+	padding-top: 4px !important;
+	border: none !important;
+}
+
+/* Navigation Bar Includes Everything to Left of Tabs */
+#nav-bar {
+	margin-top: 0px !important;
+    margin-left: var(--initial-width);
+    margin-right: var(--initial-width);
+	height: var(--menubar-height) !important;
+    padding-bottom: 7px;
+    padding-left: 7px;
+    border: none !important;
+}
+
+/* Overflow Button: The one where you hide the extensions */
+overflow-button {
+	padding-bottom: 2px !important;
+}
+
+/* Titlebar: The one where all the tabs go */
+#titlebar,
+#navigator-toolbox {
+	background-color: var(--color-bg) !important;
+}
+
+/* Removes a one pixel black line from the entire "navigator toolbox" (that's the entire top bar thing). */
+#navigator-toolbox {
+	border-bottom: none !important;
+}
+
+/* Urlbar: The one where the long computery bits go */
+#urlbar[breakout][breakout-extend] {
+	top: calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2) !important;
+	/*left: 0 !important;*/
+	width: 100% !important;
+}
+
+#urlbar[breakout][breakout-extend]>#urlbar-input-container {
+	height: var(--urlbar-height) !important;
+	padding-block: 0px !important;
+	padding-inline: 0px !important;
+}
+
+#urlbar-container {
+	margin-top: 1px !important;
+	max-width: 1450px !important;
+	min-width: 150px !important;
+}
+
+#urlbar #urlbar-background {
+	background-color: var(--color-bg) !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+input#urlbar-input {
+	caret-color: var(--lwt-toolbar-field-focus-color) !important;
+	font-family: var(--urlbar-text-font) !important;
+	font-size: var(--urlbar-text-size) !important;
+	font-weight: var(--urlbar-text-weight) !important;
+	width: 99999px !important;
+}
+
+/* Https Indicator: Please put in your credit card details. */
+#identity-box {
+	margin: -2px !important;
+	padding-bottom: 2px !important;
+	padding-right: 4px !important;
+	border: none !important;
+}
+
+/* Reload: The one for when you fuck up in inspect element */
+#reload-button {
+	margin-right: -6px !important;
+}
+
+/* Bookmark Bar: The one bar that doesn't need to exist */
+#PlacesToolbarItems {
+	margin-top: 1px !important;
+	-moz-box-pack: center;
+}
+
+
+/* Tabs Toolbar: The one that's quite literally the whole fucking bar */
+#TabsToolbar {
+    display: none !important;
+}
+
+/* Handles the theming of bookmark folders */
+.bookmark-item {
+	transition: all var(--transition-speed) ease !important;
+}
+
+/* Make close and audio buttons partially visible unless hovered over */
+.tab-icon-sound,
+.tab-close-button {
+	opacity: var(--close-button-opacity-nonhover) !important;
+	transition: all var(--transition-speed) ease !important;
+	position: fixed;
+	right: 0;
+}
+
+.tab-close-button:hover,
+.tab-icon-sound:hover {
+	opacity: 1 !important;
+}
+
+/* Don't indent urls */
+.urlbarView.megabar .urlbarView-results[wrap] > .urlbarView-row[has-url] > .urlbarView-row-inner > .urlbarView-url {
+	padding-inline-start: revert !important;
+}
+
+/* Regular Browser Tabs */
+/* Make the container text on the url bar smaller and not colored. Make zoom indicator smaller, too. */
+#userContext-icons,
+#urlbar-zoom-button {
+	scale: 80%;
+	margin: -1px !important;
+	--identity-tab-color: #ccc !important;
+	--identity-icon-color: #ccc !important;
+}
+
+/* Make the sidebar dark with bookmarks, history, and synced tabs */
+#sidebar-box {
+    z-index: 1000 !important;
+    position: relative !important;
+    background: var(--color-bg) !important;
+    padding-top: calc(-1 * var(--menubar-height));
+    min-width: var(--initial-width) !important;
+    max-width: var(--initial-width) !important;
+}
+
+#sidebar-box #sidebar {
+    min-width: var(--sidebar-width) !important;
+    max-width: var(--sidebar-width) !important;
+    background: var(--color-bg) !important;
+    transform: translateX(calc(var(--initial-width) - var(--sidebar-width))) !important;
+    transition: all 0.2s ease-in-out;
+    margin-top: var(--menubar-height) !important;
+}
+
+/* move inner to show entire sidebar */
+#sidebar-box #sidebar:hover {
+    transform: translateX(0) !important;
+    box-shadow: 3px 3px 3px 3px var(--shadow-color);
+}
+
+
+#main-window[title^="Firefox Developer Edition"] #sidebar-box {
+    margin-top: var(--toolmenubar-height) !important;
+}
+
+#sidebar {
+    border-right: none !important;
+}
+
+#sidebar-panel,
+#template-container.content-scrollable {
+	background: var(--color-bg) !important;
+}
+
+
+#sidebar-header,
+#sidebar-splitter {
+    display: none !important;
+}
+
+#sidebar-switcher-target {
+	background: none !important;
+	transition: all var(--transition-speed) ease !important;
+}
+
+#sidebar-switcher-target:hover {
+	background: var(--color-selected) !important;
+	transition: all var(--transition-speed) ease !important;
+}
+
+/* Make extension overflow menu dark */
+#widget-overflow-mainView {
+	background: var(--color-bg) !important;
+}
+
+#overflowMenu-customize-button {
+	background: var(--color-hover) !important;
+}
+
+#widget-overflow-fixed-list .toolbarbutton-1:hover,
+#overflowMenu-customize-button:hover {
+	background: var(--color-selected) !important;
+	transition: all var(--transition-speed) ease !important;
+}
+
+/* Make the find bar nice and dark */
+findbar {
+	background: var(--color-bg) !important;
+	border-top-color: var(--color-hover) !important;
+}
+
+.findbar-button,
+.findbar-find-next,
+.findbar-find-previous {
+  outline: 0 !important;
+	transition: all var(--transition-speed) ease !important;
+}
+
+.findbar-button:hover {
+	background: var(--color-hover) !important;
+}
+
+.findbar-button[checked="true"] {
+	background: var(--color-selected) !important;
+}
+
+/* Changes "flash" when opening a new tab */
+#browser vbox#appcontent tabbrowser,
+#content,
+
+/* I don't know what this shit does but it looks important. */
+.browser-toolbar:not(.titlebar-color) {
+	background-color: var(--color-bg) !important;
+}
+
+/* Hide lots of shit:
+ * Back and Forward buttons,
+ * Bookmark button,
+ * Pocket button,
+ * HTTPS icon,
+ * Bookmark icon from autocompleted links,
+ * I don't actually know this one,
+ * I think this one shows your picture when logged into Sync,
+ * Some history button,
+ * Minimize, Maximize, and Close Buttons,
+ * Tab spacers,
+ * An annoying "tab background" that is just in the way,
+ * The colored line on top of a tab,
+ * The colored line when in a containered tab,
+ * The tab seperators on either side of a tab,
+ * Favicons.
+ */
+
+#back-button,
+#forward-button,
+#star-button,
+#pocket-button,
+#tracking-protection-icon-container,
+.urlbarView-type-icon,
+.urlbar-history-dropmarker,
+.titlebar-buttonbox-container,
+.titlebar-buttonbox,
+.titlebar-spacer[type="pre-tabs"],
+.titlebar-spacer[type="post-tabs"]{
+	display: none !important;
+}
+
+#window-controls  {
+	display:none!important;
+}

@@ -41,9 +41,25 @@ set cursorline
  
 "to sync vim clipboard with sys primary clipboard
 set clipboard=unnamed,unnamedplus
-"for wayland clipboard
 
-"to prevent clearing clipboard on exit
+" Wayland clipboard provider that strips carriage returns (GTK3 issue).
+" This is needed because currently there's an issue where GTK3 applications on
+" Wayland contain carriage returns at the end of the lines (this is a root
+" issue that needs to be fixed).
+let g:clipboard = {
+      \   'name': 'wayland-strip-carriage',
+      \   'copy': {
+      \      '+': 'wl-copy --foreground --type text/plain',
+      \      '*': 'wl-copy --foreground --type text/plain --primary',
+      \    },
+      \   'paste': {
+      \      '+': {-> systemlist('wl-paste --no-newline | tr -d "\r"')},
+      \      '*': {-> systemlist('wl-paste --no-newline --primary | tr -d "\r"')},
+      \   },
+      \   'cache_enabled': 1,
+      \ }
+
+"to prevent clearing clipboard on exit on x11
 "autocmd VimLeave * call system("xsel -ib", getreg('+'))
 
 "search as characters are entered
@@ -69,6 +85,13 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 "plugins go here
 "-----------------------------------------------------------------------------"
+"markdown preview
+Plugin 'skanehira/preview-markdown.vim'
+"manage conda environments
+Plugin 'cjrh/vim-conda'
+"file explorer
+Plugin 'preservim/nerdtree'
+"autocompletion
 Plugin 'Valloric/YouCompleteMe'
 " Snippets
 Plugin 'SirVer/ultisnips'
@@ -187,7 +210,6 @@ autocmd FileType cpp 		imap <F8> <ESC>:w<CR><ESC>:!g++ -DLOCAL -std=gnu++11 -Wsh
 autocmd FileType tex      	imap <F5> <ESC>:w<CR><ESC>:!pdflatex '%'<CR> 
 autocmd FileType tex      	nmap <F5> <ESC>:w<CR><ESC>:!pdflatex '%'<CR> 
 
-autocmd Filetype python call SetJupyterKeyBindings()
 autocmd Filetype python let g:python_highlight_all = 1
 autocmd Filetype python Python3Syntax
 
