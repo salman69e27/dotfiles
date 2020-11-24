@@ -31,16 +31,17 @@
 		"format": " / "
     },
     "pulseaudio": {
-        "scroll-step": 5,
-        "format": "{icon}  {volume}%",
-        "format-alt": "{volume} {icon}",
-        "format-alt-click": "click-right",
-        "format-muted": "  Muted",
-        "format-icons": {
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol",
-        "tooltip": true
+		"format": "{icon}  {volume}%",
+		"format-alt": "{volume} {icon}",
+		"format-alt-click": "click-right",
+		"format-muted": "  Muted",
+		"format-icons": {
+			"default": ["", "", ""]
+		},
+		"on-click": "pamixer -t",
+		"on-scroll-up": "pamixer -i 5 -u --allow-boost",
+		"on-scroll-down": "pamixer -d 5 -u --allow-boost",
+		"tooltip": true
     },
 	"memory": {
 		"interval": 1,

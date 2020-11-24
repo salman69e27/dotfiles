@@ -2,4 +2,6 @@ scripts/spotify-rofi-lyrics/.env
 scripts/spotify-rofi-lyrics/cur_lyrics
 sway/config.backup
 nvim/.netrwhist
+nvim/cache/
+nvim/plugged/
 scripts/rofi-lastpass

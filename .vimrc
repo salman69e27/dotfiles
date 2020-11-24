@@ -85,6 +85,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 "plugins go here
 "-----------------------------------------------------------------------------"
+"python syntax
+Plugin 'vim-python/python-syntax'
 "markdown preview
 Plugin 'skanehira/preview-markdown.vim'
 "manage conda environments
@@ -136,7 +138,6 @@ Plugin 'nightsense/nemo'
 Plugin 'morhetz/gruvbox'
 Plugin 'lisposter/vim-blackboard'
 Plugin 'pgavlin/pulumi.vim'
-Plugin 'vim-python/python-syntax'
 Plugin 'cocopon/iceberg.vim'
 Plugin 'salman69e27/moonlight.vim'
 Plugin 'rakr/vim-one'

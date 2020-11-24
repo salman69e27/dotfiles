@@ -11,6 +11,7 @@
 		"custom/spotify"
     ],
     "modules-center": [
+      "network"
     ],
     "modules-right": [
 		"sway/window"
