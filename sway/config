@@ -317,5 +317,5 @@ exec mako
 output LVDS-1 pos 0 0
 output VGA-1 pos 1600 0
 input "16700:12314:PixArt_Dell_MS116_USB_Optical_Mouse" {
-    pointer_accel -0.5
+    pointer_accel -0.6
 }

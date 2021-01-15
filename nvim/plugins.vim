@@ -1,4 +1,13 @@
 call plug#begin()
+"session management
+Plug 'tpope/vim-obsession'
+"debugging
+Plug 'puremourning/vimspector'
+"snippets
+" Track the engine.
+Plug 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
 "pandoc
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -35,11 +44,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'preservim/nerdcommenter'
 "IPy
 Plug 'greghor/vim-pyShell'
-" Jupyter-Vim integration
-Plug 'jupyter-vim/jupyter-vim'
-"Cells
-Plug 'julienr/vim-cellmode'
-Plug 'benmills/vimux'
 "Align
 Plug 'godlygeek/tabular'
 " Themes
