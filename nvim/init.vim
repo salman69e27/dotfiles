@@ -2,7 +2,7 @@
 runtime plugins.vim
 
 "for ftplugin
-filetype plugin on
+filetype plugin indent on
 
 "for GUI colors
 set t_8f=[38;2;%lu;%lu;%lum
@@ -15,6 +15,9 @@ set noshowmode
 "enable syntax
 syntax on
 
+"allow super cursor to fly around in the space
+set virtualedit=all
+
 "show line numbers
 set nu
 set rnu
@@ -26,12 +29,17 @@ set ruler
 set wrap
 
 "indentation settings
+set expandtab
+set shiftwidth=4
+set softtabstop=4
 set autoindent          " use indent of previous line on new lines
-set shiftwidth=4        " indent with four spaces
 silent! set breakindent " indent wrapped lines
 
 "display status line
 set laststatus=2
+
+"disable conceal for current line
+"set cocu=""
 
 "try to keep backups in one system-appropriate dir
 set backup
@@ -82,15 +90,23 @@ set incsearch
 
 "highlight search matches
 set hlsearch
-nnoremap <C-c> :nohlsearch <CR>
-
-"move real lines when line is wrapped
-nnoremap j gj
-nnoremap k gk
 
 "set cursor to solid blink in normal mode and solid vertical bar in insert
 let &t_SI = "\e[5 q" "insert mode (start insert)
 let &t_EI = "\e[1 q" "normal mode (exit insert)
+
+"load bindings
+runtime bindings.vim
+
+function! ToggleQuickFix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen
+    else
+        cclose
+    endif
+endfunction
+
+nnoremap <silent> <leader>q :call ToggleQuickFix()<cr>
 
 "set colorscheme
 colorscheme srcery
@@ -98,5 +114,5 @@ set background=dark
 "transparent background
 hi Normal guibg=NONE ctermbg=NONE 
 
-"wait before setting cocu for pandoc-syntax
-au VimEnter * set cocu=""
+luafile ~/.config/nvim/plugin/python-lsp.lua
+luafile ~/.config/nvim/plugin/compe-config.lua

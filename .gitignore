@@ -4,4 +4,6 @@ sway/config.backup
 nvim/.netrwhist
 nvim/cache/
 nvim/plugged/
+nvim/sessions/
+nvim/spell/
 scripts/rofi-lastpass
