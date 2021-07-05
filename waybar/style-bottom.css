@@ -1,4 +1,4 @@
-@define-color bg rgba(15, 15, 15, 0.8);
+@define-color bg rgba(15, 15, 15, 0.0);
 @define-color ac rgba(69, 83, 86, 1);
 @define-color fg rgba(255, 255, 255, 1);
 @define-color fg-alt rgba(60, 64, 72, 1);
@@ -7,7 +7,7 @@
 * {
     border:        none;
     border-radius: 0;
-    font-family:   Zekton;
+    font-family:   "JetBrains Mono", "Font Awesome 5 Free Solid";
     font-size:    12px;
     box-shadow:    none;
     text-shadow:   none;

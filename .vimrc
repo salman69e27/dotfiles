@@ -86,68 +86,8 @@ Plugin 'VundleVim/Vundle.vim'
 "plugins go here
 "-----------------------------------------------------------------------------"
 "python syntax
-Plugin 'vim-python/python-syntax'
-"markdown preview
-Plugin 'skanehira/preview-markdown.vim'
-"manage conda environments
-Plugin 'cjrh/vim-conda'
-"file explorer
-Plugin 'preservim/nerdtree'
-"autocompletion
-Plugin 'Valloric/YouCompleteMe'
-" Snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-let g:UltiSnipsExpandTrigger="<F2>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
-" end Snippets
-
-"status line
-Plugin 'itchyny/lightline.vim'
-
-"color highlight
-Plugin 'chrisbra/Colorizer'
-"indentation line
-Plugin 'Yggdroot/indentLine'
-"commenter
-Plugin 'preservim/nerdcommenter'
-
-"IPy
-Plugin 'greghor/vim-pyShell'
-" Jupyter-Vim integration
-Plugin 'jupyter-vim/jupyter-vim'
-
-"Cells
-Plugin 'julienr/vim-cellmode'
-Plugin 'benmills/vimux'
-
-"Align
-Plugin 'godlygeek/tabular'
-
-" Themes
-Plugin 'cormacrelf/vim-colors-github'
-Plugin 'relastle/bluewery.vim'
-Plugin 'arcticicestudio/nord-vim'
-Plugin 'victorze/foo'
-Plugin 'bluz71/vim-nightfly-guicolors'
-Plugin 'doums/darcula'
-Plugin 'sainnhe/forest-night'
-Plugin 'nightsense/nemo'
-Plugin 'morhetz/gruvbox'
-Plugin 'lisposter/vim-blackboard'
-Plugin 'pgavlin/pulumi.vim'
-Plugin 'cocopon/iceberg.vim'
-Plugin 'salman69e27/moonlight.vim'
-Plugin 'rakr/vim-one'
-Plugin 'gryf/wombat256grf'
-Plugin 'romainl/Apprentice'
-Plugin 'jpo/vim-railscasts-theme'
-Plugin 'eemed/sitruuna.vim'
-Plugin 'Marfisc/vorange'
-Plugin 'srcery-colors/srcery-vim'
-
+Plugin 'vimwiki/vimwiki'
+Plugin 'tools-life/taskwiki'
 call vundle#end()
 
 "for vundle
@@ -157,12 +97,7 @@ filetype plugin indent on
 set encoding=utf-8
 
 "set colorscheme
-colorscheme srcery
 set background=dark
-
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ }
 
 "python autocompletion
 let g:ycm_filetype_blacklist = {'python':1}

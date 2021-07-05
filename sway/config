@@ -18,6 +18,7 @@ set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 
 ## applications
 set $terminal kitty
+set $browser firefox
 # set brightness logarithmically by factor 1.4
 bindsym --locked XF86MonBrightnessUp exec light -S "$(light -G | awk '{ print int(($1 + .72) * 1.4) }')"
 bindsym --locked XF86MonBrightnessDown exec light -S "$(light -G | awk '{ print int($1 / 1.4) }')"
@@ -87,14 +88,14 @@ exec_always /home/salman/.config/scripts/import-gsettings \
 bindsym $mod+Return exec $terminal
 
 # start program launcher
-bindsym $mod+d exec wofi --show drun --lines 8 --columns e
+#bindsym $mod+d exec wofi --show drun --lines 8 --columns e
+bindsym $mod+d exec nwggrid
 
-bindsym $mod+F2 exec firefox
+bindsym $mod+F2 exec $browser
 bindsym $mod+F3 exec nemo
 bindsym $mod+Shift+F3 exec "$terminal -e ranger"
 bindsym $mod+F4 exec mailspring
 bindsym $mod+F8 exec spotify
-bindsym $mod+p exec 'env LPASS_CLIPBOARD_COMMAND="wl-copy" dotfiles/scripts/rofi-lastpass/rofi-lastpass'
 
 bindsym $mod+c exec bash ~/scripts/RestartNetwork/RestartNetwork.sh
 
@@ -107,6 +108,7 @@ assign [app_id="termite"] $ws1
 assign [app_id="kitty"] $ws1
 assign [class="Emacs"] $ws1
 assign [app_id="firefox"] $ws2
+assign [app_id="Brave-browser"] $ws2
 assign [class="Google-chrome"] $ws2
 assign [class="Chromium"] $ws2
 assign [app_id="nemo"] $ws3
@@ -310,12 +312,16 @@ bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# dropbox
-exec ~/.dropbox-dist/dropboxd
+# syncthing
+exec "syncthing -no-browser &"
 exec_always "bash /home/salman/.config/waybar/launch.sh &"
 exec mako
 output LVDS-1 pos 0 0
 output VGA-1 pos 1600 0
 input "16700:12314:PixArt_Dell_MS116_USB_Optical_Mouse" {
     pointer_accel -0.6
+}
+
+input "1118:203:PixArt_Microsoft_USB_Optical_Mouse" {
+    pointer_accel -0.5
 }

@@ -5,7 +5,7 @@
 	--menubar-height                        : -33px;
 	--toolmenubar-height                    : -33px;    /* sum of previous two */
 	--shadow-color                          : #28282F;  /* shadow color. set to #00000000 for no shadow. same as folder color from hntp and tab-hover color from tst*/
-	--color-bg                              : rgba(15, 15, 15, 1);
+	--color-bg                              : rgba(27, 27, 36, 1);
 	--color-hover                           : rgba(11, 11, 11, 1);
 	--color-selected                        : rgba(7, 7, 7, 1);
 	--close-button-opacity-nonhover         : 0.2;
