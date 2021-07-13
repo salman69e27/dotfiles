@@ -1,3 +1,6 @@
+"LSP keeps yelling patter not found its frustrating
+set shortmess+=c
+
 "load plugins
 runtime plugins.vim
 
@@ -109,10 +112,10 @@ endfunction
 nnoremap <silent> <leader>q :call ToggleQuickFix()<cr>
 
 "set colorscheme
-colorscheme srcery
+colorscheme jellybeans
 set background=dark
 "transparent background
-hi Normal guibg=NONE ctermbg=NONE 
+"hi Normal guibg=NONE ctermbg=NONE 
 
 luafile ~/.config/nvim/plugin/python-lsp.lua
 luafile ~/.config/nvim/plugin/compe-config.lua

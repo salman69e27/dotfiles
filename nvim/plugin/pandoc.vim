@@ -1,3 +1,6 @@
+" Disable spelling
+let g:pandoc#spell#enabled = 0
+
 let g:pandoc#filetypes#handled = ["pandoc"]
 
 function! PandocAss()

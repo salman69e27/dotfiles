@@ -1,4 +1,6 @@
 call plug#begin()
+"For highliting and other stuff
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 "LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
@@ -38,6 +40,7 @@ Plug 'tools-life/taskwiki'
 "tag navigation
 Plug 'preservim/tagbar'
 "note taking
+Plug 'michal-h21/vimwiki-sync'
 Plug 'michal-h21/vim-zettel'
 Plug 'vimwiki/vimwiki', { 'branch' : 'dev' }
 "markdown preview
@@ -94,4 +97,5 @@ Plug 'Marfisc/vorange'
 Plug 'srcery-colors/srcery-vim'
 Plug 'jcherven/jummidark.vim'
 Plug 'rafalbromirski/vim-aurora'
+Plug 'nanotech/jellybeans.vim'
 call plug#end()
